@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -30,10 +31,10 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system">
           <header className="border-b">
             <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-              <a href="/" className="font-semibold">Legal Assistant</a>
+              <Link href="/" className="font-semibold">Legal Assistant</Link>
               <nav className="flex items-center gap-4 text-sm">
-                <a href="/" className="hover:underline">Home</a>
-                <a href="/dashboard" className="hover:underline">Dashboard</a>
+                <Link href="/" className="hover:underline">Home</Link>
+                <Link href="/dashboard" className="hover:underline">Dashboard</Link>
               </nav>
             </div>
           </header>
