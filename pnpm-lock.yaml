@@ -56,6 +56,9 @@ importers:
       tesseract.js:
         specifier: ^6.0.1
         version: 6.0.1
+      uuid:
+        specifier: ^10.0.0
+        version: 10.0.0
       zustand:
         specifier: ^5.0.7
         version: 5.0.7(@types/react@19.1.9)(react@19.1.0)
