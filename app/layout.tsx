@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,23 +25,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100`}> 
-        <header className="border-b">
-          <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-            <a href="/" className="font-semibold">Legal Assistant</a>
-            <nav className="flex items-center gap-4 text-sm">
-              <a href="/" className="hover:underline">Home</a>
-              <a href="/dashboard" className="hover:underline">Dashboard</a>
-            </nav>
-          </div>
-        </header>
-        {children}
-        <footer className="border-t">
-          <div className="mx-auto max-w-6xl px-6 py-4 text-sm text-zinc-600 dark:text-zinc-400">
-            © {new Date().getFullYear()} Legal Assistant
-          </div>
-        </footer>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100`}>
+        <ThemeProvider defaultTheme="system">
+          <header className="border-b">
+            <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+              <a href="/" className="font-semibold">Legal Assistant</a>
+              <nav className="flex items-center gap-4 text-sm">
+                <a href="/" className="hover:underline">Home</a>
+                <a href="/dashboard" className="hover:underline">Dashboard</a>
+              </nav>
+            </div>
+          </header>
+          {children}
+          <footer className="border-t">
+            <div className="mx-auto max-w-6xl px-6 py-4 text-sm text-zinc-600 dark:text-zinc-400">
+              © {new Date().getFullYear()} Legal Assistant
+            </div>
+          </footer>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
